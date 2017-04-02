@@ -31,8 +31,6 @@ fun findPost(id: Int) = Option.Some(Post(id, "Functors are fun", "Learn how to u
 
 fun getPostTitle(post: Post) = post.title
 
-inline infix fun <A, B> Option<A>.map(f: (A) -> B): Option<B> = map(f)
-
 typealias IntFunction = (Int) -> Int
 
 infix fun IntFunction.map(g: IntFunction): IntFunction {
