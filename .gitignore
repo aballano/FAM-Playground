@@ -41,7 +41,6 @@ captures/
 .idea/gradle.xml
 .idea/libraries
 .idea/markdown-navigator
-.idea/
 
 # Keystore files
 *.jks
