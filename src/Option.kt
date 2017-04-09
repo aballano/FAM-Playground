@@ -6,6 +6,11 @@ sealed class Option<out A> {
         is None -> this
         is Some -> Some(f(value))
     }
+
+    infix inline fun <B> flatMap(f: (A) -> Option<B>): Option<B> = when (this) {
+        is None -> this
+        is Some -> f(value)
+    }
 }
 
 infix fun <A, B> Option<(A) -> B>.apply(f: Option<A>): Option<B> = when (this) {
