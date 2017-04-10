@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
     println(Some(3) map ::curriedTimes apply Some(5))
     // => Some(15)
 
-    println(Some(3) map ::dopCurriedTimes apply Some(5) apply Some(4))
+    println(Some(3) map curry(::tripleProduct) apply Some(5) apply Some(4))
     // => Some(60)
 }
 
@@ -37,8 +37,6 @@ fun curriedTimes(a: Int) = { b: Int ->
     a * b
 }
 
-// This is the curried version of:
-// fun dopTimes(a: Int, b: Int, c: Int) = a * b * c
-fun dopCurriedTimes(a: Int) = { b: Int ->
-    { c: Int -> a * b * c }
-}
+fun tripleProduct(a: Int, b: Int, c: Int) = a * b * c
+
+fun <A, B, C, D> curry(f: (A, B, C) -> D): (A) -> (B) -> (C) -> D = { a -> { b -> { c -> f(a, b, c) } } }
