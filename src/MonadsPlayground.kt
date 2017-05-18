@@ -6,7 +6,7 @@ fun main(args: Array<String>) {
     // None
     println(Some(4).flatMap(::half))
     // 2
-    println(Some(2).flatMap(::half))
+    println(None.flatMap(::half))
     // None
 
     Some(20) flatMap ::half flatMap ::half flatMap ::half
